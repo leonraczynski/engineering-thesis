@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="inventory-items" directorySegmentName="seg_0" id="2BD2C649-03A8-DA3B-181B-C88A278808D9">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:36 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<sourcePk>91BA45C2-3591-7588-8011-A43AB4870CBE</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>234B6EC6-AB0D-38A7-E301-94972370F76D</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>A8641C18-9357-3CE8-6B11-25D50AEEE17D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

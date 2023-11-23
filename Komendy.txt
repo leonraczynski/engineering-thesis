@@ -1,0 +1,8 @@
+1. Inicjalizacja projektu
+    - npm init -y
+
+2. Instalacja serwera w node.js
+    - npm install express
+
+3. Instalacja obsługi SQLite Database
+    - npm install sqlite3

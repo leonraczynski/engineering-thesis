@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A8641C18-9357-3CE8-6B11-25D50AEEE17D" name="items">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:21:26 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_ite_item" id="25E022C8-5353-16B0-84DD-6168C800AFCA">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:21:46 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_image" id="0A6E6816-5D9B-B3AF-CB02-2303C49D5C7A">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:22:05 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_type" id="C265B538-0FBA-EC0B-7414-2CCB0E306F77">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:22:53 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_name" id="574537E3-C10D-B783-78AC-AEC14B7981E2">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:24:10 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_damage" id="95C363D2-B0A9-41E8-2D0D-BC70579D9D72">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:24:32 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_defense" id="7260CBD1-E943-319E-EBB9-6E843F0D48E9">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:25:31 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_hitpoints" id="C9E02681-2498-0637-57AD-46CDD6194FE5">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:26:30 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="item_cost" id="204C11B2-BCF3-E55B-203A-B0255C70C57C">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:26:59 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_inv_item" id="08D3C1C3-E787-1CEC-13DB-2094392BA719">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:36 UTC</createdTime>
+<generatorID>2BD2C649-03A8-DA3B-181B-C88A278808D9</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="true"/>
+</engineerTo>
+<referedAttribute>E445BFD8-173D-4910-0FDF-017159EFF71D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="EEB922A3-1B22-AF03-7640-9008FC81B09B" name="items PK">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:22:03 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="D64F06CB-AB18-D618-D525-3BF8A02FF7CB" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>25E022C8-5353-16B0-84DD-6168C800AFCA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

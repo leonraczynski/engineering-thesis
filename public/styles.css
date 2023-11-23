@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "MedivalSharp";
+    src: url(/Extras/Fonts/MedivalSharp/MedievalSharp-Book.ttf);
+}
+
+html {
+    padding: 0px;
+    margin: 0px;
+    font-family: "MedivalSharp";
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+    /* background-image: url(/Graphics/Maps/game_frame.png); */
+}
+
+.game-area {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+#minimap {
+    display: none;
+}
+
+#inventory-button, #settings-button {
+    height: 32px;
+    width: 98px;
+    filter: contrast(100%);
+}
+
+.itemFrame {
+    height: 54px;
+    width: 54px;
+    position: fixed;
+    background-color: white;
+    opacity: 0;
+    z-index: 8;
+}
+
+.item {
+    height: 54px;
+    width: 54px;
+    position: fixed;
+    display: none;
+}
+
+.coin {
+    height: 25px;
+    width: 25px;
+    position: fixed;
+    display: none;
+}
+
+.itemDetailsFrame {
+    height: 70px;
+    width: 175px;
+    padding: 2px;
+    left: 100px;
+    top: 100px;
+    position: fixed;
+    background-color: #4a2a09;
+    border: 3px solid #3c2105;
+    font-size: 0.9rem;
+    opacity: 0.92;
+    display: none;
+    z-index: 9;
+}

@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="4A237DC9-FDD7-9E55-0377-89955732AD5F" name="hero" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="5FC53E31-F3D4-7ADD-708F-385EA5D7CD1A" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="234B6EC6-AB0D-38A7-E301-94972370F76D" name="inventory" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="5FC53E31-F3D4-7ADD-708F-385EA5D7CD1A" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="A8641C18-9357-3CE8-6B11-25D50AEEE17D" name="items" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="5FC53E31-F3D4-7ADD-708F-385EA5D7CD1A" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="2BD2C649-03A8-DA3B-181B-C88A278808D9" name="inventory-items" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="5FC53E31-F3D4-7ADD-708F-385EA5D7CD1A" propertySourceId="234B6EC6-AB0D-38A7-E301-94972370F76D" propertyTargetId="A8641C18-9357-3CE8-6B11-25D50AEEE17D"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

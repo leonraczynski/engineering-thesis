@@ -1,0 +1,13 @@
+{
+  "name": "apka",
+  "version": "1.0.0",
+  "description": "Opis Twojej aplikacji",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^5.1.6"
+  }
+}

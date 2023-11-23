@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="5FC53E31-F3D4-7ADD-708F-385EA5D7CD1A" mainViewID="A0993C2D-1474-0C4F-E080-3FE7E2BF5F26">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:09:41 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
