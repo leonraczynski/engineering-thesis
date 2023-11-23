@@ -1,0 +1,154 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="29F89144-2CE6-D007-7D37-472CA07910C2" name="items">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>A8641C18-9357-3CE8-6B11-25D50AEEE17D</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_ite_item" id="790411FE-FF00-44AB-9F68-D5AA77A0E40C">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>25E022C8-5353-16B0-84DD-6168C800AFCA</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_image" id="2A233E1F-83CE-8AAC-8E3B-B732FC1DDE62">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>0A6E6816-5D9B-B3AF-CB02-2303C49D5C7A</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_type" id="3C0702E8-587A-553B-2912-E3B915FCFB5B">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>C265B538-0FBA-EC0B-7414-2CCB0E306F77</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_name" id="72E49E42-BBF1-B11E-1D44-EA21B57948B7">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>574537E3-C10D-B783-78AC-AEC14B7981E2</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>A3A3C77D-0366-9768-FF89-1C25E56881C8</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_damage" id="249D3E2B-324C-C76F-F0CB-7C6FE59F45BF">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>95C363D2-B0A9-41E8-2D0D-BC70579D9D72</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_defense" id="310FAD81-5993-A00F-5C34-3922C75F6CF6">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>7260CBD1-E943-319E-EBB9-6E843F0D48E9</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_hitpoints" id="D1DA5599-8C21-E6C8-D6E7-9EC6CC0BC506">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>C9E02681-2498-0637-57AD-46CDD6194FE5</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="item_cost" id="75A716D4-AF1F-DE0B-94DC-0E9E1BA26964">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>204C11B2-BCF3-E55B-203A-B0255C70C57C</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="inventory_id_inv_item" id="8261E652-0E5E-A713-190B-F28F733F6CE7">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:51 UTC</createdTime>
+<generatorID>08D3C1C3-E787-1CEC-13DB-2094392BA719</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5E827004-7608-12C2-511F-59FFEF9EA7C1" referredColumn="ED6A3B45-B7B1-88EE-F28C-94D39C006D9B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="47C91056-BFF6-6B04-9266-D8E4E7FA3D62" name="items_PK">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:34:56 UTC</createdTime>
+<generatorID>EEB922A3-1B22-AF03-7640-9008FC81B09B</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="790411FE-FF00-44AB-9F68-D5AA77A0E40C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3E55FFF9-0500-108F-B354-6BC55A1B2872" name="items__IDX">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:51 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>2BD2C649-03A8-DA3B-181B-C88A278808D9</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="8261E652-0E5E-A713-190B-F28F733F6CE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="53C3D352-E530-3667-CA4A-90D4E3C30C33" name="items_inventory_FK">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:51 UTC</createdTime>
+<generatorID>2BD2C649-03A8-DA3B-181B-C88A278808D9</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8261E652-0E5E-A713-190B-F28F733F6CE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

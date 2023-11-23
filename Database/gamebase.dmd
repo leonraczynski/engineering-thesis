@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="gamebase" id="C050BB5E-E584-A7C3-2DB2-2C254115C031" version="3.5">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:09:41 UTC</createdTime>
+<ownerDesignName>gamebase</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>C050BB5E-E584-A7C3-2DB2-2C254115C031</designId>
+</OSDM_Design>

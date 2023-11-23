@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5E827004-7608-12C2-511F-59FFEF9EA7C1" containerWithKeyObject="29F89144-2CE6-D007-7D37-472CA07910C2" localFKIndex="53C3D352-E530-3667-CA4A-90D4E3C30C33" name="items_inventory_FK">
+<createdBy>Leonidas</createdBy>
+<createdTime>2023-10-29 14:35:51 UTC</createdTime>
+<generatorID>2BD2C649-03A8-DA3B-181B-C88A278808D9</generatorID>
+<ownerDesignName>gamebase</ownerDesignName>
+<referredTableLongName>inventory</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>389E8AF7-ACB8-C351-61C8-785671A25CAF</referredTableID>
+<keyObject>E0107273-8363-C053-D8AB-66C860DCC685</keyObject>
+<referredKeyID>E0107273-8363-C053-D8AB-66C860DCC685</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_inv_item</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
