@@ -18,11 +18,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/Extras/Fonts', express.static(path.join(__dirname, '/Extras/Fonts')));
 app.use('/Graphics/GUI', express.static(path.join(__dirname, '/Graphics/GUI')));
 app.use('/Graphics/Heroes', express.static(path.join(__dirname, '/Graphics/Heroes')));
+app.use('/Graphics/NPCs', express.static(path.join(__dirname, '/Graphics/NPCs')));
 app.use('/Graphics/Maps', express.static(path.join(__dirname, '/Graphics/Maps')));
 app.use('/Graphics/Monsters', express.static(path.join(__dirname, '/Graphics/Monsters')));
 app.use('/Graphics/Weapons', express.static(path.join(__dirname, '/Graphics/Weapons')));
+// app.use('/javascript/objects', express.static(path.join(__dirname, 'javascript/objects')));
 // app.use('/node_modules/sqlite3', express.static(path.join(__dirname, '/node_modules/sqlite3')));
-
 
 // Routing
 app.get('/', (req, res) => {
@@ -40,8 +41,20 @@ app.get('/skrypt.mjs', (req, res) => {
   res.sendFile(path.join(__dirname, 'javascript', 'skrypt.mjs'));
 });
 
-app.get('/connection.mjs', (req, res) => {
-  res.sendFile(path.join(__dirname, 'javascript', 'connection.mjs'));
+app.get('/collisions.mjs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'javascript', 'collisions.mjs'));
+});
+
+app.get('/collisionsMap.mjs', (req, res) => {
+  res.sendFile(path.join(__dirname, '/javascript/objects', 'collisionsMap.mjs'));
+});
+
+app.get('/charactersMap.mjs', (req, res) => {
+  res.sendFile(path.join(__dirname, '/javascript/objects', 'charactersMap.mjs'));
+});
+
+app.get('/monstersMap.mjs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'javascript/objects', 'monstersMap.mjs'));
 });
 
 app.get('/config.mjs', (req, res) => {

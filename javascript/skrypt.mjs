@@ -1,14 +1,16 @@
 import * as config from './config.mjs';
+import * as collisions from './collisions.mjs';
 import * as image from './images.mjs';
 import { sleep, random } from './utilities.mjs';
 import * as characters from './characters.mjs';
 import * as inventory from './inventory.mjs';
 
+
+
 window.addEventListener('load', function() {
     // Canvas element
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
-
     // Minimap element
     const minimapCanvas = document.querySelector('#minimap');
     const minimapCtx = minimap.getContext('2d');
@@ -39,11 +41,15 @@ window.addEventListener('load', function() {
     // Map start position
     let mapX = 0;
     let mapY = -200;
+    // Hero start position
+    const heroX = Math.round((config.CANVAS_WIDTH - config.HERO_FRAME_WIDTH) / 2);
+    const heroY = Math.round((config.CANVAS_HEIGHT - config.HERO_FRAME_HEIGHT) / 2);
     // Array of monsters
     let monsterArray = [];
-    let numberOfMonsters = config.GOLEM_COUNT;
+    let npcArray = [];
     // Array of items
     let itemsArray = [];
+    let lastHeroDirection = "";
 
     async function startGame() {
         try {
@@ -53,8 +59,8 @@ window.addEventListener('load', function() {
             if (connected) {
                 if (itemsLoaded) {
                     reciveUpdateCanvasRequest();
-                    drawObjects();
-                    inventory.createInventory(ctx);
+                    await drawObjects();
+                    await inventory.createInventory(ctx);
                     await inventory.loadInventory();
                 } else {
                     console.error('Failed to load items.');
@@ -133,19 +139,21 @@ window.addEventListener('load', function() {
 
     // Draw all game objects (once the game is loaded)
     async function drawObjects() {
-        if (await image.checkAllImagesLoaded()) {   
-            ctx.drawImage(image.backgroundForest, mapX, mapY);
-            characters.getHeroObject(hero);
-            for (let i = 0; i < monsterArray.length; i++) {
-                monsterArray[i].drawCharacter(ctx);
-            }
-            hero.drawCharacter(ctx);
-            hero.breathing();
-            
-            drawMinimap();
-            configureButtons();
-            updateCanvas();
+        await image.checkAllImagesLoaded();  
+        ctx.drawImage(image.backgroundForest, mapX, mapY);
+        await collisions.createCollisionObstacles(mapX, mapY, ctx);
+        await characters.createCharacters(mapX, mapY, ctx);
+        await characters.createMonsters(mapX, mapY, ctx);
+        monsterArray = characters.getMonsterArray(); 
+        characters.setHeroObject(hero);
+        for (let i = 0; i < characters.monsterArray.length; i++) {
+            characters.monsterArray[i].drawCharacter(ctx);
         }
+        hero.drawCharacter(ctx);
+        hero.breathing();  
+        drawMinimap();
+        configureButtons();
+        updateCanvas();    
     }
 
     function drawMinimap() {
@@ -180,52 +188,32 @@ window.addEventListener('load', function() {
         settingsButton.style.backgroundImage = 'url("Graphics/GUI/settings_button.png")';
     }  
 
-    function changeMapCordinates(side) {
-        // Change map coordinates whenever hero moves
-        if (side == 'up') {
-            mapY += hero.stepLength;
-            // Move all monsters in the opposite direction to the hero
-            for (let i = 0; i < monsterArray.length; i++) {
-                monsterArray[i].positionY += hero.stepLength;
-            }
-        }
-
-        else if (side == 'down') {
-            mapY -= hero.stepLength;
-            for (let i = 0; i < monsterArray.length; i++) {
-                monsterArray[i].positionY -= hero.stepLength;
-            }
-        }
-
-        else if (side == 'left') {
-            mapX += hero.stepLength;
-            for (let i = 0; i < monsterArray.length; i++) {
-                monsterArray[i].positionX += hero.stepLength;
-            }
-        }
-
-        else if (side == 'right') {
-            mapX -= hero.stepLength;
-            for (let i = 0; i < monsterArray.length; i++) {
-                monsterArray[i].positionX -= hero.stepLength;
-            }
-        }
-    }
-
     function updateCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);                                   // Clear entire display
         ctx.drawImage(image.backgroundForest, mapX, mapY);                                  // Draw map
-        monsterArray = characters.getMonsterArray();                                        // Set monsters array
+        for (let i = 0; i < collisions.obstacles.length; i++) {
+            collisions.obstacles[i].draw(ctx);                                             // Draw [i] monsters
+        }
+        monsterArray = characters.getMonsterArray();                                        // Get monsters array
         for (let i = 0; i < monsterArray.length; i++) {
             monsterArray[i].drawCharacter(ctx);                                             // Draw [i] monsters
         }
+        npcArray = characters.getNPCArray();                                                // Get NPC array
+        for (let i = 0; i < npcArray.length; i++) {
+            npcArray[i].drawCharacter(ctx);                                                // Draw [i] NPCs
+        }
         hero.drawCharacter(ctx);                                                            // Draw hero
-        characters.getHeroObject(hero);                                                     // Send hero object to the characters.js file
+        characters.setHeroObject(hero);                                                     // Send hero object to the characters.js file
         drawMinimap();                                                                      // Draw minimap
         if (characters.isInvenoryOpen) {                                                    // Check if inventory is open
             characters.setIsInvenoryOpen(false);                                            // Set inventory to false because drawInventory function will open it again
             inventory.drawInventory(ctx);                                                   // Draw inventory
-        }                                                                     
+        }   
+
+        ctx.fillStyle = 'red';
+        ctx.fillRect(hero.positionX + hero.width / 2, hero.positionY + hero.height / 1.5, 6, 6);
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(findNearestObstacle().positionX + findNearestObstacle().width / 2, findNearestObstacle().positionY + findNearestObstacle().height / 2, 6, 6);                                              
     }
 
     async function reciveUpdateCanvasRequest() {
@@ -239,18 +227,13 @@ window.addEventListener('load', function() {
     }
     
     // Create hero object
-    const hero = new characters.Hero('Marvin', image.playerImage, config.HERO_FRAME_WIDTH, config.HERO_FRAME_HEIGHT, 0, 0, config.HERO_STEP_LENGTH, config.HERO_CAN_ATTACK, ctx);
-    
-    // Send hero object to the characters.js file
-    characters.getHeroObject(hero);
+    const hero = new characters.Hero('Marvin', image.playerImage, config.HERO_FRAME_WIDTH, config.HERO_FRAME_HEIGHT, heroX, heroY, config.HERO_STEP_LENGTH, config.HERO_CAN_ATTACK, ctx);
+    characters.setHeroObject(hero);                 // Send hero object to the characters.js file
 
-    // Create monster objects and push them to the array
-    for (let i = 0; i < numberOfMonsters; i++) {
-        monsterArray.push(new characters.Golem('Golem', image.golemImage, config.GOLEM_FRAME_WIDTH, config.GOLEM_FRAME_HEIGHT, random(config.GOLEM_DETECTION_DISTANCE, 300), random(config.GOLEM_DETECTION_DISTANCE, 300), config.GOLEM_STEP_LENGTH, config.GOLEM_CAN_ATTACK, config.GOLEM_HEALTH, ctx));   
-    }
     
-    // Send monster array to the characters.js file
-    characters.setMonsterArray(monsterArray);
+         // Send monster array to the characters.js file
+
+    
 
     this.document.onkeydown = function(e) {
         // characters.Hero movement control
@@ -258,21 +241,25 @@ window.addEventListener('load', function() {
             case 37:
                 // Send hero direction to the character.js file
                 characters.setHeroDirection('left');
+                lastHeroDirection = 'left';
                 keyState["ArrowLeft"] = true;
                 break;
 
             case 38:
                 characters.setHeroDirection('up');
+                lastHeroDirection = 'up';
                 keyState["ArrowUp"] = true;
                 break;
             
             case 39:
                 characters.setHeroDirection('right');
+                lastHeroDirection = 'right';
                 keyState["ArrowRight"] = true;
                 break;
             
             case 40:
                 characters.setHeroDirection('down');
+                lastHeroDirection = 'down';
                 keyState["ArrowDown"] = true;
                 break;
             
@@ -298,7 +285,7 @@ window.addEventListener('load', function() {
 
             case 77:
                 // [M]
-                console.log(inventory.inventoryFramesCords[1]);
+                // console.log(inventory.inventoryFramesCords[1]);
                 break;
         }
 
@@ -374,17 +361,94 @@ window.addEventListener('load', function() {
 
         if (keyState["ArrowDown"] || keyState["ArrowUp"] || keyState["ArrowLeft"] || keyState["ArrowRight"]) {
             hero.move();
-            changeMapCordinates(characters.heroDirection);
+            moveObjects(characters.heroDirection);
             updateCanvas();
         }
     }, 30);
 
-    window.onresize = function(event) {
-  
-    };
-
+    function checkObstacleCollision(direction) {
+        const heroCenterX = hero.positionX + hero.width / 2;
+        const heroCenterY = hero.positionY + hero.height / 1.5;
+        const obstacle = findNearestObstacle();
     
+        const obstacleCenterX = obstacle.positionX + obstacle.width / 2;
+        const obstacleCenterY = obstacle.positionY + obstacle.height / 2;
+    
+        const heroRadius = Math.min(hero.width, hero.height) / 2.7;
+        // const obstacleRadius = Math.min(obstacle.width, obstacle.height) / 2;
+    
+        const distanceX = Math.abs(heroCenterX - obstacleCenterX);
+        const distanceY = Math.abs(heroCenterY - obstacleCenterY);
+    
+        if (direction === 'up' && heroCenterY > obstacleCenterY && distanceX <= heroRadius && distanceY <= heroRadius + hero.stepLength) {
+            return false; // true
+        } 
+        else if (direction === 'down' && heroCenterY < obstacleCenterY && distanceX <= heroRadius && distanceY <= heroRadius + hero.stepLength) {
+            return false;
+        } 
+        else if (direction === 'left' && heroCenterX > obstacleCenterX && distanceX <= heroRadius + hero.stepLength && distanceY <= heroRadius) {
+            return false;
+        } 
+        else if (direction === 'right' && heroCenterX < obstacleCenterX && distanceX <= heroRadius + hero.stepLength && distanceY <= heroRadius) {
+            return false;
+        }
+    
+        return false;
+    }
+    
+    function moveObjects() {
+        const stepLength = hero.stepLength;
+    
+        function updatePosition(objectArray, axis, sign) {
+            for (let i = 0; i < objectArray.length; i++) {
+                objectArray[i][axis] += sign * stepLength;
+            }
+        }
+    
+        if (keyState["ArrowUp"] && lastHeroDirection === 'up' && !checkObstacleCollision('up')) {
+            mapY += stepLength;
+            updatePosition(collisions.obstacles, 'positionY', 1);
+            updatePosition(monsterArray, 'positionY', 1);
+            updatePosition(npcArray, 'positionY', 1);
+        } else if (keyState["ArrowDown"] && lastHeroDirection === 'down' && !checkObstacleCollision('down')) {
+            mapY -= stepLength;
+            updatePosition(collisions.obstacles, 'positionY', -1);
+            updatePosition(monsterArray, 'positionY', -1);
+            updatePosition(npcArray, 'positionY', -1);
+        } else if (keyState["ArrowLeft"] && lastHeroDirection === 'left' && !checkObstacleCollision('left')) {
+            mapX += stepLength;
+            updatePosition(collisions.obstacles, 'positionX', 1);
+            updatePosition(monsterArray, 'positionX', 1);
+            updatePosition(npcArray, 'positionX', 1);
+        } else if (keyState["ArrowRight"] && lastHeroDirection === 'right' && !checkObstacleCollision('right')) {
+            mapX -= stepLength;
+            updatePosition(collisions.obstacles, 'positionX', -1);
+            updatePosition(monsterArray, 'positionX', -1);
+            updatePosition(npcArray, 'positionX', -1);
+        }
+    }
+    
+
+    function findNearestObstacle() {
+        const heroCenterPointX = hero.positionX + hero.frameWidth / 2 - 1;
+        const heroCenterPointY = hero.positionY + hero.frameHeight / 1.5;
+        let nearestObstacle = null;
+        let distance = Infinity; 
+        for (let i = 0; i < collisions.obstacles.length; i++) {
+            const obstacleCenterPointX = collisions.obstacles[i].positionX + collisions.obstacles[i].width / 2;
+            const obstacleCenterPointY = collisions.obstacles[i].positionY + collisions.obstacles[i].height / 2;
+            const distanceBetween = Math.sqrt(Math.pow(heroCenterPointX - obstacleCenterPointX, 2) + Math.pow(heroCenterPointY - obstacleCenterPointY, 2));
+            if (distanceBetween < distance) {
+                distance = distanceBetween;
+                nearestObstacle = collisions.obstacles[i];
+                
+            }
+        }
+        // ctx.fillStyle = 'blue';
+        // ctx.fillRect(nearestObstacle.positionX + nearestObstacle.width / 2, nearestObstacle.positionY + nearestObstacle.height / 2, 6, 6);
+        return nearestObstacle;
+    }
+
     startGame();
-    // console.log(window.innerWidth);
 });
 

@@ -5,6 +5,13 @@ export const minimapFrame = new Image();
 export const playerImage = new Image();
 export const golemImage = new Image();
 export const inventoryImage = new Image();
+// NPCs
+export const governorImage = new Image();
+export const commanderImage = new Image();
+export const guardImage = new Image();
+export const doctorImage = new Image();
+export const sellerImage = new Image();
+export const minerImage = new Image();
 
 const loadedImages = [];
 const totalImages = config.TOTAL_IMAGES;
@@ -47,4 +54,34 @@ async function loadImages() {
     golemImage.onload = function() {
         loadedImages.push(golemImage);
     };
+
+    governorImage.src = '/Graphics/NPCs/governor.png';
+    governorImage.onload = function() {
+        loadedImages.push(governorImage);
+    }
+
+    doctorImage.src = '/Graphics/NPCs/doctor.png';
+    doctorImage.onload = function() {
+        loadedImages.push(doctorImage);
+    }
+
+    commanderImage.src = '/Graphics/NPCs/commander.png';
+    commanderImage.onload = function() {
+        loadedImages.push(commanderImage);
+    }
+
+    guardImage.src = '/Graphics/NPCs/guard.png';
+    guardImage.onload = function() {
+        loadedImages.push(guardImage);
+    }
+
+    minerImage.src = '/Graphics/NPCs/miner.png';
+    minerImage.onload = function() {
+        loadedImages.push(minerImage);
+    }
+
+    sellerImage.src = '/Graphics/NPCs/seller.png';
+    sellerImage.onload = function() {
+        loadedImages.push(sellerImage);
+    }
 }

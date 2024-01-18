@@ -1,0 +1,29 @@
+{
+    "grandfather": {
+        "stage1": {
+            "ask": [
+                "Napełniłem wiadra z wodą tak jak prosiłeś dziadku! Czy jest coś jeszcze w czym mógłym ci pomoć?",
+                "Dawno nie byłem w mieście! Z miłą chęcią się tam wybiorę.",
+                "Dziadku... jak mógłbym zapomnieć? Wychodząc z naszego podwórza muszę trzeba skierwować się na północ."
+            ],
+            "answer": [
+                "Trzeba uzupełnić zapasy nim nadejdzie zima. Mógłyś udać się do miasta i kupić potrzebne rzeczy od tamtejszego handlarza.",
+                "Pamietasz drogę prawda?",
+                "Zgadza się. Ruszaj więc, ale pamiętaj by nie oddalać się za bardzo w stronę wschodnich traktów. Król Garond zmniejszył w ostatnim czasie ilość patroli na szlakach z powodu problemów w stolicy. Lepiej na siebie uważać."
+            ]
+        }
+    },
+
+    "gatekeeper": {
+        "stage1": {
+            "ask": [
+                "Jestem...",
+                "Przychodzę z małego gospodarstwa na południe stąd. "
+            ],
+            "answer": [
+                "Stać! Kim jesteś?! Nnigdy wcześniej cię nie widziałem!",
+                "Podaj cel wizyty w mieście."
+            ]
+        }
+    }
+}

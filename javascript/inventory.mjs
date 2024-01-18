@@ -251,7 +251,7 @@ export function setItemsArray(array) {                                          
     itemsArray = array;
 }
 
-export function createInventory() {
+export async function createInventory() {
     const inventoryFramesArray = Object.values(inventoryFramesCords);                   // Create array of inventoryFramesCords elements
     console.log(inventoryFramesArray[0][0]);
     for (let j = 0; j < inventoryFramesArray.length; j++) {
