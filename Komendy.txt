@@ -4,5 +4,8 @@
 2. Instalacja serwera w node.js
     - npm install express
 
+3. Instalacja obsługi sesji na serwerze
+    - npm install express-session
+
 3. Instalacja obsługi SQLite Database
     - npm install sqlite3
