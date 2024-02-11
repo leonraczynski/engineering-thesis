@@ -1,28 +1,242 @@
 {
     "grandfather": {
-        "stage1": {
+        "1": {
             "ask": [
-                "Napełniłem wiadra z wodą tak jak prosiłeś dziadku! Czy jest coś jeszcze w czym mógłym ci pomoć?",
-                "Dawno nie byłem w mieście! Z miłą chęcią się tam wybiorę.",
-                "Dziadku... jak mógłbym zapomnieć? Wychodząc z naszego podwórza muszę trzeba skierwować się na północ."
+                "Zgadza się. Wystarczyło pare gwoździ i po problemie. Jest coś jeszcze do zrobienia?",
+                "Dawno mnie tam nie było. Z miłą chęcią się wybiorę.",
+                "Jak mógłbym zapomnieć?! Przecież to niedaleko stąd. Wychodząc z naszego podwórza muszę udać się na północ.",
+                "Ruszam więc."
             ],
             "answer": [
-                "Trzeba uzupełnić zapasy nim nadejdzie zima. Mógłyś udać się do miasta i kupić potrzebne rzeczy od tamtejszego handlarza.",
+                "Widzę, że udało ci się napełnić wiadra. Naprawiłeś kołowrotek od studni?",
+                "Trzeba uzupełnić zapasy nim nadejdzie zima. Mógłyś udać się do miasta i kupić potrzebne rzeczy od tamtejszego handlarza?",
                 "Pamietasz drogę prawda?",
-                "Zgadza się. Ruszaj więc, ale pamiętaj by nie oddalać się za bardzo w stronę wschodnich traktów. Król Garond zmniejszył w ostatnim czasie ilość patroli na szlakach z powodu problemów w stolicy. Lepiej na siebie uważać."
+                "Zgadza się. Ruszaj więc, ale pamiętaj by nie oddalać się za bardzo w stronę wschodnich traktów. Król Edwin zmniejszył w ostatnim czasie ilość patroli na szlakach z powodu problemów w stolicy. Lepiej na siebie uważać."
+            ]
+        },
+        "2": {
+            "ask": [
+                "Tak, a przy okazji udało mi się zamienić kilka zdań z gubernatorem. Pytał o ciebie.",
+                "Niczego nowego nie zauważyłem, za to strażnicy przy bramie stali się bardzo ostrożni i nie ufni.",
+                "Idę się położyć i odpocząć przed jutrzejszym dniem. Muszę załatwić parę spraw."
+            ],
+            "answer": [
+                "Widzę że już wróciłeś. Dostałeś wszystko czego potrzeba?",
+                "Napradę? To miło z jego strony. Powiedz, dużo się pozmieniało od ostatniej naszej wizyty?",
+                "Ehh... Nie ma się co dziwić."
+            ]
+        },
+        "3": {
+            "ask": [
+                "[kiwa głową]"
+            ],
+            "answer": [
+                "Uważaj na siebie..."
             ]
         }
     },
 
-    "gatekeeper": {
-        "stage1": {
+    "gatekeeper1": {
+        "1": {
             "ask": [
                 "Jestem...",
-                "Przychodzę z małego gospodarstwa na południe stąd. "
+                "Przychodzę z małego gospodarstwa na południe stąd. Chcieliśmy uzupełnić zapasy przed zbliżającą się zimą.",
+                "Dziękuję. Nie będe sprawiać problemów."
             ],
             "answer": [
                 "Stać! Kim jesteś?! Nnigdy wcześniej cię nie widziałem!",
-                "Podaj cel wizyty w mieście."
+                "Podaj cel wizyty w mieście.",
+                "Hmm... Nie wyglądasz mi na jednego z tych bandytów. Możesz przejść, ale pamiętaj, jeżeli złamiesz przepisy panujące w mieście natychmiast cię aresztuję!"
+            ]
+        }
+    },
+
+    "gatekeeper2": {
+        "1": {
+            "ask": [
+                "Wiem, słyszałem już to od strażnika przy zewnętrznym murze. Przychodzę do tutejszego handlarza.",
+                "Dziękuję, nie zamierzam zostać tu na dłużej niż to konieczne."
+            ],
+            "answer": [
+                "Stój! Wkraczasz do górnego miasta, gdzie urzęduje gubernator i inni szanowani obywatele. Przez wzgląd na ostatnie wydarzenia każda osoba wchodząca do górnego miasta jest bacznie obserwowana. Powiedz mi dokąd zmierzasz?",
+                "W takim razie musisz iść dalej tą drogą, aż po prawej stronie ujrzysz kamienną studnię. Za nią skręć w prawo i wtedy powinieneś dostrzec kupca."
+            ]
+        }
+    },
+
+    "governor": {
+        "1": {
+            "ask": [
+                "Dzień dobry gubernatorze. Wiele pracy mieliśmy w gospodarstwie, nie było czasu. Zima jednak za rogiem, noce coraz chłodniejsze, a nam zapasy się kończą. Dlatego też przyszedłem po to i owo.",
+                "Wiem... Jednak wie Pan jaki jest dziadek... To jego dom rodzinny - on nie lubi zmian.",
+                "I to jeszcze jak! Ostatnio nawet skończył stawiać ogrodzenie! Ma już swoje lata, a w ogóle tego po nim nie widać.",
+                "Zgadza się... Pójdę już, chciałbym załatwić wszystko za dnia, by przed zmierzchem być w domu",
+                "Do zobaczenia!"
+            ],
+            "answer": [
+                "Witaj! Co sprowadza cię do miasteczka? Dawno cię nie widziałem.",
+                "Hmm... rozumiem. Mówiłem twojemu dziadkowi wiele razy, abyście zamieszkali w mieście. Tutaj niczego by wam nie brakowało.",
+                "Wiem, wiem... A co u niego? Zdrowy jest?",
+                "Ha! Cały on!",
+                "Oczywiście nie zatrzymuję cie dłużej. Mam jednakże jedną sprawę do ciebie... Przyjdź do mnie jak już wszystko kupisz i będziesz wracać z powrotem."
+            ]
+        },
+
+        "2": {
+            "ask": [
+                "Słyszałem. Dziadek mi mówił. Strażnicy zaś traktowali mnie jak jakiegoś zbira...",
+                "O co chodzi? Proszę powiedzieć.",
+                "Hmm... To kawałek drogi stąd, ale myślę że dam radę. Wrócę jednak z zapasami do domu i kolejnego dnia wyruszę na posterunek. W każdym bądź razie może pan na mnie liczyć.",
+                "Dziękuję. Ruszam więc z powrotem do domu."
+            ],
+            "answer": [
+                "Pewnie już słyszałeś o tym co dzieje się w stolicy? Jest o krok od wojny domowej, ludzie wychodzą na ulice. Król ewidentnie sobie nie radzi. Ba! Na nas też się to odbija! Coraz mniej widać patroli na traktach między miastami.",
+                "Wszyscy mamy obawy... Dawno cię tu nie było, a niektórzy nowo zapszysięzeni strażnicy miesjcy mogą cię nie kojarzyć. Mówię ci to wszystko jednak po to bo chce abyś coś dla mnie zrobił.",
+                "Chciałbym abyś poszedł do strażnicy znajdującej się przy przełęczy. Stacjonuje tam mój stary znajomy. Od jakiegoś czasu nie otrzymałem od niego żadnych wieści o sytuacji w pozostałych miastach.",
+                "Jestem ci dozgodnie wdzięczny! Weź ten oręż. Mam nadzieję że ci się nie przyda, jednakże warto mieć coś do obrony, chociażby przed dzikimi zwierzętami."
+            ]
+        },
+
+        "3": {
+            "ask": [
+                "Dziwne... Nikt nie pilnuje przejścia - nikogo tam nie ma, a brama jest zamknięta. Strażnica wyglądała jakby ktoś ją w pośpiechu opuścił. Nieopodal miasta napotkałem dziwne fioletowe stwory. Jeden nawet mnie zaatakował!",
+                "Tak zrobię."
+            ],
+            "answer": [
+                "Wracasz z wyprawy? Powiedz czego udało ci się dowiedzieć?",
+                "Co takiego?! Nikt nie strzeże przejścia przez przełęcz?! Sytuacja jest gorsza niż myślałem. W przypadku ataku bandytów jesteśmy zdani sami na siebie. A jeśli chodzi o te potwory to udaj się do komendanta. On już o wszystkim wie."
+            ]
+        }
+    },
+
+    "seller": {
+        "1": {
+            "ask": [
+                "Chciałbym kupić parę rzeczy... [KUP ZAPASY]"
+            ],
+            "answer": [
+                "Witaj! Co mógłbym dla ciebie zrobić?"
+            ]
+        },
+
+        "2": {
+            "ask": [
+                "Ehh.. Rozumiem..."
+            ],
+            "answer": [
+                "Z powodu zamknięcia głównego szlaku handlowe, niestety nic nie mogę ci zaoferować."
+            ]
+        },
+
+        "3": {
+            "ask": [
+                "Ehh... Rozumiem..."
+            ],
+            "answer": [
+                "Z powodu zamknięcia głównego szlaku handlowe, niestety nic nie mogę ci zaoferować."
+            ]
+        }
+    },
+
+    "commander": {
+        "1": {
+            "ask": [
+                "..."
+            ],
+            "answer": [
+                "W tym momencie nie mam żadych zadań dla ciebie. Wróć później."
+            ]
+        },
+
+        "2": {
+            "ask": [
+                "..."
+            ],
+            "answer": [
+                "W tym momencie nie mam żadych zadań dla ciebie. Wróć później."
+            ]
+        },
+
+        "3": {
+            "ask": [
+                "Panie komendancie przysyła mnie gubernator. Co się dzieje? Wszsycy zachowują się tutaj tajemniczo.",
+                "Oczywiśćie, zachowam to dla siebie.",
+                "To ta sama istota, którą spotkałem w drodzę do strażnicy! To znaczy, że musi być ich więcej. Czy to ma związek z opuszczeniem przez rycerzy posterunku przy przełęczy?",
+                "W zasadzie to nic poza tą dziwną istotą i pustym garnizonem.",
+                "Może mógłbym jeszcze jakoś pomóc?",
+                "Gdy byłem jeszcze dzieciakiem ojciec uczył mnie jak poprawnie władać mieczem.",
+                "Jaka?",
+                "...",
+                "Gdzie znajduje się ta kopalnia?",
+                "Sprawdzę to i na pewno uda mi się sprowadzić pomoc. Ruszam więc czym prędzej."
+            ],
+            "answer": [
+                "Dobrze, że jesteś.",
+                "Sytuacja jest poważna i na ten moment bardzo delikanta. Prosiłbym cię, aby nasza rozmowa została między nami.",
+                "Jakiś czasu temu podczas zwiadu napotkaliśmy na dziwną istotę. Nie wiemy czym jest. Zaatakowała nas, lecz zdołaliśmy ją ogłuszyć i zamknąć w lochu.",
+                "Nie wiemy. Gubernator Larius przekazał mi, że masz mi coś do powiedzenia odnośnie twojej wyprawy. Co udało ci się ustalić?",
+                "Musimy więc podjąć odpowiednie kroki, by zabezpieczyć miasto i jego mieszkańców na wypadek ataku łupieżców i tych stworów.",
+                "Hmm... Skoro tak rwiesz się do roboty. Może jest coś co mógłbyś jeszcze zrobić... Udało ci się w pojedynke ujść z życiem w konfrontacji z tymi stworami, a nawet wygrałeś pojedynek.",
+                "Jedyne przejście prowadzące do stolicy jest zamknięte, a my musimy NATYCHMIAST poinformować rade o tym co się tu dzieje. Jedyne co mi teraz przychodzi do głowy to ta stara historia...",
+                "Niedaleko znajduje się opuszczona kopalnia. Od lat nikt do niej nie zaglądał. Istnieją opowieści mówiące o szmuglerach przemieszczających się między doliną a pozostałą częścią królestwa tunelami w celu uniknięcia patroli.",
+                "Nigdy nie było mi dane sprawdzić czy te historie mają jakieś podłoże... Ale w obecnej sytuacji to nasza jedyna szansa na dostanie się do stolicy. Wierzę w ciebie że uda cię się sprawdzić ten trop i wrócić do nas w jednym kawałku.",
+                "Gdy dojdziesz do rozdroża, udaj się północnym szlakiem. W pewnym momencie ujrzysz most, którym musisz przejść. Dokładna lokalizacja wejścia jest mi nieznana. Jak mówiłem nigdy nie sprawdzałem tego obszaru skrupulatnie."
+            ]
+        }
+    },
+
+    "doctor": {
+        "1": {
+            "ask": [
+                "Jasne!"
+            ],
+            "answer": [
+                "Witaj, przybyszu! Wyglądasz na prawdziwego poszukiwacza przygód. Potrzebujesz może leczenia?"
+            ]
+        },
+
+        "2": {
+            "ask": [
+                "Jasne!"
+            ],
+            "answer": [
+                "Witaj, przybyszu! Wyglądasz na prawdziwego poszukiwacza przygód. Potrzebujesz może leczenia?"
+            ]
+        },
+
+        "3": {
+            "ask": [
+                "Jasne!"
+            ],
+            "answer": [
+                "Witaj, przybyszu! Wyglądasz na prawdziwego poszukiwacza przygód. Potrzebujesz może leczenia?"
+            ]
+        }
+    },
+
+    "miner" : {
+        "1": {
+            "ask": [
+                "..."
+            ],
+            "answer": [
+                "Daj mi spokój! Nie widzisz, że pracuję?!"
+            ]
+        },
+        "2": {
+            "ask": [
+                "..."
+            ],
+            "answer": [
+                "Daj mi spokój! Nie widzisz, że pracuję?!"
+            ]
+        },
+        "3": {
+            "ask": [
+                "..."
+            ],
+            "answer": [
+                "Daj mi spokój! Nie widzisz, że pracuję?!"
             ]
         }
     }

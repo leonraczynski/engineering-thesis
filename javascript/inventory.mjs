@@ -1,6 +1,9 @@
 import * as config from './config.mjs';
-import { hero, monsterArray, isInvenoryOpen, setIsInvenoryOpen } from "./characters.mjs";
+import { isInvenoryOpen } from "./skrypt.mjs";
+import { hero, monsterArray } from "./characters.mjs";
 import { inventoryImage } from "./images.mjs";
+import * as request from './requests.mjs';
+// import { request } from 'express';
 
 export let updateRequest = false;
 export let inventoryFrames = [];                                                                // Define global inventoryFrames array (can be shared between other files)
@@ -14,21 +17,23 @@ let pickedItem = null;                                                          
 let pickedItemID = null;                                                                        // Define global pickedItemID variable
 let onHoverFrame = null;                                                                        // Define global onHoverFrame variable with null value
 const inventoryFramesCords = {                                                                  // inventoryFramesCords object with coordinates of each invenotry frame
-    'weapon': [invenotryPositionX + 78, invenotryPositionY + 138],
-    'helmet': [invenotryPositionX + 156, invenotryPositionY + 96],
-    'chestplate': [invenotryPositionX + 156, invenotryPositionY + 174],
-    'shoes': [invenotryPositionX + 156, invenotryPositionY + 252],
-    'shield': [invenotryPositionX + 234, invenotryPositionY + 138],
-    'frame5': [invenotryPositionX + 54, invenotryPositionY + 384],
-    'frame6': [invenotryPositionX + 156, invenotryPositionY + 384],
-    'frame7': [invenotryPositionX + 258, invenotryPositionY + 384],
-    'frame8': [invenotryPositionX + 54, invenotryPositionY + 462],
-    'frame9': [invenotryPositionX + 156, invenotryPositionY + 462],
-    'frame10': [invenotryPositionX + 258, invenotryPositionY + 462],
-    'frame11': [invenotryPositionX + 54, invenotryPositionY + 540],
-    'frame12': [invenotryPositionX + 156, invenotryPositionY + 540],
-    'frame13': [invenotryPositionX + 258, invenotryPositionY + 540],
+    'weapon': [invenotryPositionX + 78, invenotryPositionY + 139],
+    'helmet': [invenotryPositionX + 156, invenotryPositionY + 97],
+    'chestplate': [invenotryPositionX + 156, invenotryPositionY + 175],
+    'shoes': [invenotryPositionX + 156, invenotryPositionY + 253],
+    'shield': [invenotryPositionX + 234, invenotryPositionY + 139],
+    'frame5': [invenotryPositionX + 54, invenotryPositionY + 385],
+    'frame6': [invenotryPositionX + 156, invenotryPositionY + 385],
+    'frame7': [invenotryPositionX + 258, invenotryPositionY + 385],
+    'frame8': [invenotryPositionX + 54, invenotryPositionY + 463],
+    'frame9': [invenotryPositionX + 156, invenotryPositionY + 463],
+    'frame10': [invenotryPositionX + 258, invenotryPositionY + 463],
+    'frame11': [invenotryPositionX + 54, invenotryPositionY + 541],
+    'frame12': [invenotryPositionX + 156, invenotryPositionY + 541],
+    'frame13': [invenotryPositionX + 258, invenotryPositionY + 541],
 }
+
+const wearableFrames = ['frame0', 'frame1', 'frame2', 'frame3', 'frame4'];
 
 export class InventoryFrame { 
     constructor(number, x, y, item=null) {
@@ -116,7 +121,7 @@ export class InventoryFrame {
             if (!this.isFrameEmpty && pickedItem == null) {                             // If clicked frame isn't empty pick up an item
                 pickedItem = this.item; 
                 this.pickUpItem();                                                      // Take this.item as pickedItem          
-                if (this.frame.id == 'frame0' || this.frame.id == 'frame1' || this.frame.id == 'frame2' || this.frame.id == 'frame3' || this.frame.id == 'frame4') {
+                if (wearableFrames.includes(this.frame.id)) {
                     calculateStats(pickedItem, 'takeoff');                              // Calculate stats
                 }
                 this.isFrameEmpty = true;                                               // Reset this.isFrameEmpty to true
@@ -196,7 +201,7 @@ export class InventoryFrame {
         pickedItemID = document.getElementById(pickedItem.getItemID());                 // Get ID of pickedItem
         pickedItemID.style.left = this.frame.offsetLeft + 10 + 'px';                    // Make pick up visual effect by setting left offset
         pickedItemID.style.top = this.frame.offsetTop + 10 + 'px';                      // Make pick up visual effect by setting top offset
-        pickedItemID.style.zIndex = 8;                                                  // Set z-index to 8 for make picked item on top, over the other items in the frames
+        pickedItemID.style.zIndex = 7;                                                  // Set z-index to 8 for make picked item on top, over the other items in the frames
     }
 
     placeItem(itemToPlaceID=pickedItemID) {
@@ -253,30 +258,19 @@ export function setItemsArray(array) {                                          
 
 export async function createInventory() {
     const inventoryFramesArray = Object.values(inventoryFramesCords);                   // Create array of inventoryFramesCords elements
-    console.log(inventoryFramesArray[0][0]);
     for (let j = 0; j < inventoryFramesArray.length; j++) {
         inventoryFrames.push(new InventoryFrame(j, inventoryFramesArray[j][0], inventoryFramesArray[j][1]));    // Push new objects to inventoryFrames array
-    }
-    createCoin();                                                                       // Create spinning coin image in inventory
+    }                                                                      // Create spinning coin image in inventory
 }
 
-export function drawInventory(ctx) {                                                    // Draw inventory on the screen
-    if (!isInvenoryOpen) {                                                              // If invenotry is closed
-        setIsInvenoryOpen(true);                                                        // Set isInventoryOpen to true
-        // ctx.fillStyle = 'rgba(0, 0, 0, 0.55)';
-        // ctx.fillRect(0, 0, config.CANVAS_WIDTH, config.CANVAS_HEIGHT);
-        ctx.drawImage(inventoryImage, Math.round((config.CANVAS_WIDTH - inventoryImage.width) / 2), Math.round((config.CANVAS_HEIGHT - inventoryImage.height) / 2), inventoryImage.width, inventoryImage.height);
+export function drawItems() {                                           // Draw inventory on the screen
+    if (isInvenoryOpen) {                                                           
         for (let i = 0; i < itemsArray.length; i++) {
             itemsArray[i].showItems();                                                  // Display every item in inventory
         }
-        writeHeroStats(ctx);                                                            // Write hero stats
-        displayMoney(true);                                                             // Display coin image
-        writeHeroMoney(ctx);                                                            // Write hero money
     }
 
     else {                                                                              // If invenotry is open
-        setIsInvenoryOpen(false);                                                       // Set isInventoryOpen to false
-        displayMoney(false);                                                            // Hide coin image
         for (let i = 0; i < itemsArray.length; i++) {
             itemsArray[i].hideItems();                                                  // Hide every item in inventory
         }
@@ -288,103 +282,63 @@ export function drawInventory(ctx) {                                            
 }
 
 export async function loadInventory() {
+    const data = await request.loadInventoryRequest();
     let n = null, j = null;                                                             // Define variables for loops
     let item = null;
     let frame = null;
     let frameX = null;
     let frameY = null;
-    try {
-        const response = await fetch('/api/load-inventory');                            // Make a request to server
-        if (!response.ok) {                                                             // If response is not ok
-            throw new Error('Failed to fetch inventory data');                          // Create new error
-        }
-        const data = await response.json();                                             // Get data from response
-        for (let i = 0; i < data.inventory.length; i++) {                               // Loop through ivnentory array length from database
-            if (data.inventory[i].frame != null) {                                      // Check if frame is not null
-                for (n = 0; n < inventoryFrames.length; n++) {                          // Loop through inventoryFrames array length
-                    if (inventoryFrames[n].getFrameID() == data.inventory[i].frame) {   // Check if id of database frame object is equal to inventoryFrames[n].getFrameID()
-                        frame = inventoryFrames[n];                                     // Set 'frame' variable as inventoryFrames[n] object
-                        frameX = frame.getLeftOffset();                                 // Use offsetLeft to get frame position on X axis
-                        frameY = frame.getTopOffset();                                  // Use offsetTop to get frame position on Y axis
-                        break;
-                    }
-                }
-
-                for (j = 0; j < itemsArray.length; j++) {
-                    if (itemsArray[j].name == data.inventory[i].item_name) {            // Check if name of database item object is equal to itemsArray[j].name
-                        item = document.getElementById(itemsArray[j].getItemID());      // Get ID of item object in itemsArray
-                        item.style.left = frameX + 'px';                                // Set CSS left offset of item object
-                        item.style.top = frameY + 'px';                                 // Set CSS top offset of item object
-                        frame.isFrameEmpty = false;                                     // Set isFrameEmpty to false
-                        frame.item = itemsArray[j];                                     // Set frame.item to itemsArray[j]
-                        break;
-                    }
-                }
-
-                const inventoryFrameID = inventoryFrames[n].getFrameID();               // Get frame id every loop
-                const garmentItem = itemsArray[j];                                      // Get wearable item as itemsArray item every loop
-                if (inventoryFrameID == 'frame0' || inventoryFrameID == 'frame1' || inventoryFrameID == 'frame2' ||
-                    inventoryFrameID == 'frame3' || inventoryFrameID == 'frame4') {     // If item is in wearable slot
-                    calculateStats(garmentItem, 'wear');                                // Calculate stats for this item
+    console.log('func:', data);
+    for (let i = 0; i < data.inventory.length; i++) {                               // Loop through ivnentory array length from database
+        if (data.inventory[i].item_name != null) {                                      // Check if frame is not null
+            for (n = 0; n < inventoryFrames.length; n++) {                          // Loop through inventoryFrames array length
+                if (inventoryFrames[n].getFrameID() == data.inventory[i].frame) {   // Check if id of database frame object is equal to inventoryFrames[n].getFrameID()
+                    frame = inventoryFrames[n];                                     // Set 'frame' variable as inventoryFrames[n] object
+                    frameX = frame.getLeftOffset();                                 // Use offsetLeft to get frame position on X axis
+                    frameY = frame.getTopOffset();                                  // Use offsetTop to get frame position on Y axis
+                    break;
                 }
             }
+
+            for (j = 0; j < itemsArray.length; j++) {
+                if (itemsArray[j].name == data.inventory[i].item_name) {            // Check if name of database item object is equal to itemsArray[j].name
+                    item = document.getElementById(itemsArray[j].getItemID());      // Get ID of item object in itemsArray
+                    item.style.left = frameX + 'px';                                // Set CSS left offset of item object
+                    item.style.top = frameY + 'px';                                 // Set CSS top offset of item object
+                    frame.isFrameEmpty = false;                                     // Set isFrameEmpty to false
+                    frame.item = itemsArray[j];                                     // Set frame.item to itemsArray[j]
+                    break;
+                }
+            }
+
+            const inventoryFrameID = inventoryFrames[n].getFrameID();               // Get frame id every loop
+            const garmentItem = itemsArray[j];                                      // Get wearable item as itemsArray item every loop
+            if (inventoryFrameID == 'frame0' || inventoryFrameID == 'frame1' || inventoryFrameID == 'frame2' ||
+                inventoryFrameID == 'frame3' || inventoryFrameID == 'frame4') {     // If item is in wearable slot
+                calculateStats(garmentItem, 'wear');                                // Calculate stats for this item
+            }
         }
-        return true;                                                                    // Return true
-    } catch (error) {                                                                   // If there is an error in exception
-        console.error('Request failed:', error);                                        // Log error
-        return false;                                                                   // Return false
     }
 }
 
-function writeHeroStats(ctx) {                                                          // Write hero stats
-    const hitpoints = 'HP:    ' + hero.health;                                          // Create variable with hero stats
-    const defense = 'DEF:   ' + hero.defense;                                           // Create variable with hero stats
-    const damage = 'DMG:   ' + hero.damage;                                             // Create variable with hero stats
-    const fontSize = 13;                                                                // Set font size for text
-    const fontFamily = 'Medieval Sharp';                                                // Set font family
+export function writeHeroStats() {                                                      // Write hero stats
+    const hitpointsDiv = document.querySelector('.hero-hitpoints');
+    const defenseDiv = document.querySelector('.hero-defense');
+    const damageDiv = document.querySelector('.hero-attack');
+
+    const hitpoints = 'PŻ:    ' + hero.health;                                          // Create variable with hero stats
+    const defense = 'Obrona:   ' + hero.defense;                                           // Create variable with hero stats
+    const damage = 'Atak:   ' + hero.damage;                                             // Create variable with hero stats
     // const fontFamily = 'Almendra';
-    const x = invenotryPositionX + 51;                                                                      // Set X position for writing text
-    const y = invenotryPositionY + 249;                                                                      // Set Y position for writing text
 
-    ctx.font = `${fontSize}px ${fontFamily}`;                                           // Apply font properties
-    ctx.fillStyle = '#d4cebe';                                                          // Set text color
-    ctx.fillText(hitpoints, x, y);                                                      // Write text
-    ctx.fillText(defense, x, y + 15);                                                   // Write text
-    ctx.fillText(damage, x, y + 30);                                                    // Write text
+    hitpointsDiv.innerHTML = hitpoints;                                                  // Write hero stats
+    defenseDiv.innerHTML = defense;                                                      // Write hero stats
+    damageDiv.innerHTML = damage;                                                        // Write hero stats
 }
 
-function createCoin() {
-    // Create div element
-    const coin = document.createElement('div');
-    coin.setAttribute('class', 'coin');
-    coin.id = 'inventory-coin';
-    coin.style.left = invenotryPositionX + 235 + 'px';
-    coin.style.top = invenotryPositionY + 253 + 'px';
-    coin.style.backgroundImage = 'url(Graphics/GUI/coin.gif)';
-    coin.style.display = 'none';
-    gameArea.appendChild(coin);
-}
-
-function writeHeroMoney(ctx) {
-    const money = hero.money;
-    const fontSize = 17;
-    const fontFamily = 'Medieval Sharp';
-    // const fontFamily = 'Almendra';
-    const x = invenotryPositionX + 264;
-    const y = invenotryPositionY + 272;
-
-    ctx.font = `${fontSize}px ${fontFamily}`;
-    ctx.fillStyle = '#d4cebe';
-    ctx.fillText(money, x, y);
-}
-
-function displayMoney(state) {
-    const coin = document.getElementById('inventory-coin');
-    if (state) {
-        coin.style.display = 'block';
-    } else {
-        coin.style.display = 'none';
-    }
+export function writeHeroMoney() {
+    const heroMoney = document.querySelector('.hero-money');
+    heroMoney.innerHTML = hero.money;
 }
 
 async function saveInventory(name, frame) {
@@ -392,31 +346,17 @@ async function saveInventory(name, frame) {
         name: name,
         frame: frame
     };
-
-    try {
-        const response = await fetch('/api/save-inventory', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // Set the content type to JSON
-            },
-            body: JSON.stringify(data) // Convert data to a JSON string
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to save inventory');
-        }
-
-        const responseData = await response.json();
-        console.log('Request successful:', responseData);
-        return true;
-    }
-    
-    catch (error) {
-        console.error('Request failed:', error);
-        return false;
-    }
+    await request.saveInventoryRequest(data);
 }
 
+export function giveQuestItems() {
+    saveInventory('Sword', 'frame5');
+    saveInventory('Axe', 'frame6');
+    saveInventory('Leather-Helmet', 'frame7');
+    saveInventory('Leather-Chestplate', 'frame8');
+    saveInventory('Leather-Pants', 'frame9');
+    saveInventory('Leather-Shoes', 'frame10');
+}
 
 function calculateStats(item, action) {
     const itemDamage = item.damage;
@@ -427,12 +367,15 @@ function calculateStats(item, action) {
             hero.damage += itemDamage;
             hero.defense += itemDefense;
             hero.health += itemHitpoints;
+            writeHeroStats();
             break;
 
         case 'takeoff':
+            console.log('takeoff');
             hero.damage -= itemDamage;
             hero.defense -= itemDefense;
             hero.health -= itemHitpoints;
+            writeHeroStats();
             break;
     }
 }
