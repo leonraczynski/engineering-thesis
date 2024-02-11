@@ -1,0 +1,150 @@
+@font-face {
+    font-family: "MedivalSharp";
+    src: url(/Extras/Fonts/MedivalSharp/MedievalSharp-Book.ttf);
+}
+
+html {
+    padding: 0px;
+    margin: 0px;
+    font-family: "MedivalSharp";
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    cursor: url('/Extras/Cursors/cursor.png'), auto;
+}
+
+.login-background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: conic-gradient(from 0deg at 50% 50%, #135b72 13%, #719cb4 17%, #eff1df 19%, #eff1df 28%, #84abb5 33%, #89c21d 42%, #6e382b 51%, #115c34 71%, #135b72 86%);
+}
+
+#background-image {
+    image-rendering: pixelated;
+    transform: scale(0.6);
+}
+
+.game-title {
+    position: absolute;
+    height: auto;
+    top: 5vh;
+    font-weight: bold;
+    font-size: 8rem;
+    line-height: 0.25;
+    color: #f5f5f5;
+    text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+        1px 7px 1px #919191,
+        1px 8px 1px #919191,
+        1px 9px 1px #919191,
+        1px 10px 1px #919191,
+        1px 18px 6px rgba(16,16,16,0.4),
+        1px 22px 10px rgba(16,16,16,0.2),
+        1px 25px 35px rgba(16,16,16,0.2),
+        1px 30px 60px rgba(16,16,16,0.4);
+}
+
+#login-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    line-height: 1.4;
+    color: #f5f5f5;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 9px 6px rgba(16,16,16,0.4),
+        1px 12px 35px rgba(16,16,16,0.2),
+        1px 15px 60px rgba(16,16,16,0.4);
+}
+
+#password {
+    margin-bottom: 7px;
+}
+
+input {
+    height: 30px;
+    width: 230px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 3px;
+}
+
+input[type='text'], input[type='password'] {
+    font-family: "MedivalSharp";
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #f5f5f5;
+}
+
+form button {
+    font-family: "MedivalSharp";
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgb(33, 33, 33);
+    height: 30px;
+    width: 115px;
+    margin-top: 7px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 12px 6px rgba(16,16,16,0.4),
+        1px 15px 35px rgba(16,16,16,0.2),
+        1px 20px 60px rgba(16,16,16,0.4);
+}
+
+form button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.login-form-div {
+    position: absolute;
+    display: flex;
+    height: 250px;
+    width: 280px;
+    padding-bottom: 17px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.error-message {
+    display: none;
+    position: absolute;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    color: #d90303;
+}

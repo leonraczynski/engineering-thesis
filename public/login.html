@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login-styles.css">
+    <title>Logowanie</title>
+</head>
+<body>
+    <div class="login-background">
+        <img id="background-image" src="Graphics/GUI/ekran_logowania.png" alt="login-image">
+        <div class="game-title"> Mysterious Valley </div>
+
+        <div class="login-form-div">
+            <form id="login-form">
+                <label for="username">Nazwa bohatera:</label>
+                <input type="text" id="username" name="username" maxlength="15">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" maxlength="15">
+                <div class="buttons">
+                    <button type="button" id="login-button">Zaloguj</button>
+                    <button type="button" id="register-button">Nowa gra</button>
+                </div>
+            </form> 
+        </div>
+
+        <div class="error-message"> </div>
+    </div>
+    <script type="module" src="login.mjs"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>
